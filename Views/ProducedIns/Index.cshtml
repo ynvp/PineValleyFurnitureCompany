@@ -1,0 +1,45 @@
+﻿@model IEnumerable<S3G11_PVFAPP.Models.ProducedIn>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Produced In</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary float-end" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProducedInID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Product.ProductDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WorkCenter.WorkCenterLocation)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProducedInID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Product.ProductDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WorkCenter.WorkCenterLocation)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { wcid = item.WorkCenter.WorkCenterID, pid = item.Product.ProductID }, new { @class = "btn btn-outline-primary" })
+            @Html.ActionLink("Details", "Details", new { wcid = item.WorkCenter.WorkCenterID, pid = item.Product.ProductID }, new { @class = "btn btn-outline-secondary" })
+            @Html.ActionLink("Delete", "Delete", new { wcid = item.WorkCenter.WorkCenterID, pid = item.Product.ProductID }, new { @class = "btn btn-outline-warning" })
+        </td>
+    </tr>
+}
+
+</table>

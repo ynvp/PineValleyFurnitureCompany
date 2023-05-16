@@ -1,0 +1,70 @@
+﻿@model S3G11_PVFAPP.Models.Order
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Order</h4>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.CustomerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.CustomerName)
+        </dd>
+
+    </dl>
+</div>
+<h6>Products Ordered</h6>
+<table class="table">
+    <tr>
+        <th>Product Name</th>
+        <th> Product Price</th>
+        <th> Ordered Quantity</th>
+        <th>Price</th>
+    </tr>
+    @{ int sumTotalPrice = 0; int totalQuantity = 0; }
+    @foreach (var item in Model.OrderLine)
+
+    {
+
+        <tr>
+            <td>@Html.DisplayFor(model => item.Product.ProductDescription)</td>
+            <td>@Html.DisplayFor(model => item.Product.ProductStandardPrice)</td>
+            <td>@Html.DisplayFor(model => item.OrderedQuantity)</td>
+            <td>@((item.OrderedQuantity * item.Product.ProductStandardPrice))</td>
+            @{
+                int totalPrice = @item.OrderedQuantity.Value * @item.Product.ProductStandardPrice.Value;
+                totalQuantity += item.OrderedQuantity.Value;
+                sumTotalPrice += totalPrice;
+            }
+        </tr>
+    }
+</table>
+<table class="table">
+    <tr>
+        <th>Total Items</th>
+        <th>TOTAL PRICE</th>
+    </tr>
+    <tr>
+        <td>@totalQuantity</td>
+        <td>@sumTotalPrice</td>
+    </tr>
+</table>
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.OrderID }, new { @class = "btn btn-outline-primary" }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

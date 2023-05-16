@@ -1,0 +1,42 @@
+﻿@model S3G11_PVFAPP.Models.Supplies
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Supplies</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SupplyUnitPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SupplyUnitPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RawMaterial.MaterialName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RawMaterial.MaterialName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Vendor.VendorName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vendor.VendorName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { vid = Model.Vendor.VendorID, mid = Model.RawMaterial.MaterialID }, new { @class = "btn btn-outline-primary" }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="Customer">
+      <EntityTypeMapping TypeName="Model.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="CustomerAddress" ColumnName="CustomerAddress" />
+          <ScalarProperty Name="CustomerPostalCode" ColumnName="CustomerPostalCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employee">
+      <EntityTypeMapping TypeName="Model.Employee">
+        <MappingFragment StoreEntitySet="Employee">
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="SupervisorID" ColumnName="SupervisorID" />
+          <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+          <ScalarProperty Name="EmployeeAddress" ColumnName="EmployeeAddress" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Order">
+      <EntityTypeMapping TypeName="Model.Order">
+        <MappingFragment StoreEntitySet="Order">
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderLine">
+      <EntityTypeMapping TypeName="Model.OrderLine">
+        <MappingFragment StoreEntitySet="OrderLine">
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="OrderedQuantity" ColumnName="OrderedQuantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Product">
+      <EntityTypeMapping TypeName="Model.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+          <ScalarProperty Name="ProductFinish" ColumnName="ProductFinish" />
+          <ScalarProperty Name="ProductStandardPrice" ColumnName="ProductStandardPrice" />
+          <ScalarProperty Name="ProductLineID" ColumnName="ProductLineID" />
+          <ScalarProperty Name="ProductImage" ColumnName="ProductImage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductLine">
+      <EntityTypeMapping TypeName="Model.ProductLine">
+        <MappingFragment StoreEntitySet="ProductLine">
+          <ScalarProperty Name="ProductLineID" ColumnName="ProductLineID" />
+          <ScalarProperty Name="ProductLineName" ColumnName="ProductLineName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RawMaterial">
+      <EntityTypeMapping TypeName="Model.RawMaterial">
+        <MappingFragment StoreEntitySet="RawMaterial">
+          <ScalarProperty Name="MaterialID" ColumnName="MaterialID" />
+          <ScalarProperty Name="MaterialName" ColumnName="MaterialName" />
+          <ScalarProperty Name="MaterialStandardCost" ColumnName="MaterialStandardCost" />
+          <ScalarProperty Name="UnitOfMeasure" ColumnName="UnitOfMeasure" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Salesperson">
+      <EntityTypeMapping TypeName="Model.Salesperson">
+        <MappingFragment StoreEntitySet="Salesperson">
+          <ScalarProperty Name="SalespersonID" ColumnName="SalespersonID" />
+          <ScalarProperty Name="SalespersonName" ColumnName="SalespersonName" />
+          <ScalarProperty Name="SalespersonTelephone" ColumnName="SalespersonTelephone" />
+          <ScalarProperty Name="SalespersonFax" ColumnName="SalespersonFax" />
+          <ScalarProperty Name="TerritoryID" ColumnName="TerritoryID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SalesTerritory">
+      <EntityTypeMapping TypeName="Model.SalesTerritory">
+        <MappingFragment StoreEntitySet="SalesTerritory">
+          <ScalarProperty Name="TerritoryID" ColumnName="TerritoryID" />
+          <ScalarProperty Name="TerritoryName" ColumnName="TerritoryName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Skill">
+      <EntityTypeMapping TypeName="Model.Skill">
+        <MappingFragment StoreEntitySet="Skill">
+          <ScalarProperty Name="SkillID" ColumnName="SkillID" />
+          <ScalarProperty Name="SkillDescription" ColumnName="SkillDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Supplies">
+      <EntityTypeMapping TypeName="Model.Supplies">
+        <MappingFragment StoreEntitySet="Supplies">
+          <ScalarProperty Name="VendorID" ColumnName="VendorID" />
+          <ScalarProperty Name="MaterialID" ColumnName="MaterialID" />
+          <ScalarProperty Name="SupplyUnitPrice" ColumnName="SupplyUnitPrice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vendor">
+      <EntityTypeMapping TypeName="Model.Vendor">
+        <MappingFragment StoreEntitySet="Vendor">
+          <ScalarProperty Name="VendorID" ColumnName="VendorID" />
+          <ScalarProperty Name="VendorName" ColumnName="VendorName" />
+          <ScalarProperty Name="VendorAddress" ColumnName="VendorAddress" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WorkCenter">
+      <EntityTypeMapping TypeName="Model.WorkCenter">
+        <MappingFragment StoreEntitySet="WorkCenter">
+          <ScalarProperty Name="WorkCenterID" ColumnName="WorkCenterID" />
+          <ScalarProperty Name="WorkCenterLocation" ColumnName="WorkCenterLocation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="DoesBusinessIn" TypeName="Model.DoesBusinessIn" StoreEntitySet="DoesBusinessIn">
+      <EndProperty Name="SalesTerritory">
+        <ScalarProperty Name="TerritoryID" ColumnName="TerritoryID" />
+      </EndProperty>
+      <EndProperty Name="Customer">
+        <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="HasSkill" TypeName="Model.HasSkill" StoreEntitySet="HasSkill">
+      <EndProperty Name="Employee">
+        <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+      </EndProperty>
+      <EndProperty Name="Skill">
+        <ScalarProperty Name="SkillID" ColumnName="SkillID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ProducedIn" TypeName="Model.ProducedIn" StoreEntitySet="ProducedIn">
+      <EndProperty Name="Product">
+        <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+      </EndProperty>
+      <EndProperty Name="WorkCenter">
+        <ScalarProperty Name="WorkCenterID" ColumnName="WorkCenterID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Uses" TypeName="Model.Uses" StoreEntitySet="Uses">
+      <EndProperty Name="Product">
+        <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+      </EndProperty>
+      <EndProperty Name="RawMaterial">
+        <ScalarProperty Name="MaterialID" ColumnName="MaterialID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="WorksIn" TypeName="Model.WorksIn" StoreEntitySet="WorksIn">
+      <EndProperty Name="Employee">
+        <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+      </EndProperty>
+      <EndProperty Name="WorkCenter">
+        <ScalarProperty Name="WorkCenterID" ColumnName="WorkCenterID" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

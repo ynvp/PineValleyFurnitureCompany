@@ -1,0 +1,50 @@
+﻿@model IEnumerable<S3G11_PVFAPP.Models.Supplies>
+
+@{
+    ViewBag.Title = "Index";
+}
+<br />
+<header class="common supplies">
+</header>
+<h2>Supplies</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary float-end" })
+</p>
+<br />
+<br />
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SupplyUnitPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RawMaterial.MaterialName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vendor.VendorName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SupplyUnitPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RawMaterial.MaterialName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vendor.VendorName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { vid = item.Vendor.VendorID, mid = item.RawMaterial.MaterialID }, new { @class = "btn btn-outline-primary" })
+                @Html.ActionLink("Details", "Details", new { vid = item.Vendor.VendorID, mid = item.RawMaterial.MaterialID }, new { @class = "btn btn-outline-secondary" })
+                @Html.ActionLink("Delete", "Delete", new { vid = item.Vendor.VendorID, mid = item.RawMaterial.MaterialID }, new { @class = "btn btn-outline-warning" })
+            </td>
+        </tr>
+    }
+
+</table>

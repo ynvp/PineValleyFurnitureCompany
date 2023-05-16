@@ -1,0 +1,45 @@
+﻿@model IEnumerable<S3G11_PVFAPP.Models.WorksIn>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary float-end" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.WorksInID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Employee.EmployeeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WorkCenter.WorkCenterLocation)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.WorksInID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Employee.EmployeeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WorkCenter.WorkCenterLocation)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { eid=item.Employee.EmployeeID, wid=item.WorkCenter.WorkCenterID }, new { @class = "btn btn-outline-primary" }) 
+            @Html.ActionLink("Details", "Details", new { eid = item.Employee.EmployeeID, wid = item.WorkCenter.WorkCenterID }, new { @class = "btn btn-outline-secondary" }) 
+            @Html.ActionLink("Delete", "Delete", new { eid = item.Employee.EmployeeID, wid = item.WorkCenter.WorkCenterID }, new { @class = "btn btn-outline-warning" })
+        </td>
+    </tr>
+}
+
+</table>

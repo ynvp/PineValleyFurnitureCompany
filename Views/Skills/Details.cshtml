@@ -1,0 +1,64 @@
+﻿@model S3G11_PVFAPP.Models.Skill
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Skill</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SkillDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SkillDescription)
+        </dd>
+        <br />
+        @if (Model.HasSkill.Count == 0)
+        {
+            <strong style="color: red">No employees are currently present under this skill! 😿</strong>
+        }
+        else
+        {
+            <strong>Employees that are having this skill:</strong>
+
+            <table class="table">
+                <tr>
+                    <th>
+                        Employee ID
+                    </th>
+                    <th>
+                        Employee Name
+                    </th>
+                    <th>
+                        Employee Address
+                    </th>
+                </tr>
+
+                @foreach (var item in Model.HasSkill)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Employee.EmployeeID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Employee.EmployeeName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Employee.EmployeeAddress)
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        }
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SkillID }, new { @class = "btn btn-outline-primary" }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

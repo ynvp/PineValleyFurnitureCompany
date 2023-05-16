@@ -1,0 +1,42 @@
+﻿@model S3G11_PVFAPP.Models.ProducedIn
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ProducedIn</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ProducedInID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProducedInID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Product.ProductDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product.ProductDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WorkCenter.WorkCenterLocation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WorkCenter.WorkCenterLocation)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { wcid = Model.WorkCenter.WorkCenterID, pid = Model.Product.ProductID }, new { @class = "btn btn-outline-primary" }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

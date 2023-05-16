@@ -1,0 +1,205 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Pine Valley Furniture Company</title>
+    <style>
+        #btnSwitch {
+            position: fixed;
+            bottom: 8px;
+            left: 8px;
+            z-index: 1000;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+        }
+
+        header.common {
+            padding-top: 10.5rem;
+            padding-bottom: 6rem;
+            text-align: center;
+            color: #fff;
+            background-repeat: no-repeat;
+        }
+        header.masthead {
+            background-image: url("../../ProductImages/storefront.jpg");
+            background-size: cover;
+        }
+        header.lineup {
+            background-size: cover;
+            background-position: top;
+            background-image: url("../../ProductImages/lineup.jpg");
+        }
+        header.workcenters {
+            background-size: cover;
+            background-position: top;
+            background-image: url("../../ProductImages/workshop.png");
+        }
+        header.customers {
+            background-position: top;
+            background-image: url("../../ProductImages/customer.jpeg")
+        }
+        header.employees {
+            background-size: cover;
+            background-position: top;
+            background-image: url("../../ProductImages/employees.jpeg")
+        }
+        header.orders {
+            background-size: cover;
+            background-position: center center;
+            background-image: url("../../ProductImages/orders.jpg")
+        }
+        header.supplies {
+            background-size: cover;
+            background-position: center center;
+            background-image: url("../../ProductImages/supplies.jpeg")
+        }
+        header.vendors {
+            background-size: cover;
+            background-position: center;
+            background-image: url("../../ProductImages/vendors.jpg")
+        }
+        .btn {
+            display: inline-block;
+            font-weight: 400;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            user-select: none;
+            border: 1px solid transparent;
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            border-radius: 0.25rem;
+            transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+        .vertical-right-aligned {
+            transform: rotate(-90deg);
+            transform-origin: 100% 100%;
+            position: fixed;
+            right: 0;
+            top: 50%;
+            z-index: 100;
+        }
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+    <script>
+        function switchColorMode() {
+            btn = document.getElementsByTagName("html")[0];
+            if (btn.getAttribute("data-bs-theme") == "dark") {
+                btn.setAttribute('data-bs-theme', 'light')
+                document.getElementById("btnSwitch").innerHTML = " 🌙 ";
+                document.getElementById("btnSwitch").setAttribute('class', "btn btn-dark");
+            }
+            else {
+                btn.setAttribute('data-bs-theme', 'dark');
+                document.getElementById("btnSwitch").innerHTML = " 🌞 ";
+                document.getElementById("btnSwitch").setAttribute('class', "btn btn-light");
+            }
+        }
+    </script>
+
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            @Html.ActionLink("Pine Valley Furniture", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">@Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link active" })</li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Customers Information
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Customers", "Index", "Customers", null, new { @class = "dropdown-item" })</li>
+                            <li>@Html.ActionLink("Does Business In", "Index", "DoesBusinessIns", null, new { @class = "dropdown-item" })</li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Employees Information
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Employees", "Index", "Employees", null, new { @class = "dropdown-item" })</li>
+                            <li>@Html.ActionLink("Skills", "Index", "Skills", null, new { @class = "dropdown-item" })</li>
+                            <li>@Html.ActionLink("Has Skills", "Index", "HasSkills", null, new { @class = "dropdown-item" })</li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Orders Management
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Orders", "Index", "Orders", null, new { @class = "dropdown-item" })</li>
+                            <li>@Html.ActionLink("Order Line", "Index", "OrderLines", null, new { @class = "dropdown-item" })</li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Product Management
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Products", "Index", "Products", null, new { @class = "dropdown-item" })</li>
+                            <li>@Html.ActionLink("Product Lines", "Index", "ProductLines", null, new { @class = "dropdown-item" })</li>
+                            <li>@Html.ActionLink("Produced In", "Index", "ProducedIns", null, new { @class = "dropdown-item" })</li>
+                            <li>@Html.ActionLink("Uses", "Index", "Uses", null, new { @class = "dropdown-item" })</li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Supply Chain
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Supplies", "Index", "Supplies", null, new { @class = "dropdown-item" })</li>
+                            <li>@Html.ActionLink("Vendors", "Index", "Vendors", null, new { @class = "dropdown-item" })</li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Sales
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Salespersons", "Index", "Salespersons", null, new { @class = "dropdown-item" })</li>
+                            <li>@Html.ActionLink("Sales Territories", "Index", "Salesterritories", null, new { @class = "dropdown-item" })</li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Work Centers Management
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Work Centers", "Index", "WorkCenters", null, new { @class = "dropdown-item" })</li>
+                            <li>@Html.ActionLink("WorksIn", "Index", "WorksIns", null, new { @class = "dropdown-item" })</li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">@Html.ActionLink("About", "About", "Home", null, new { @class = "nav-link active" })</li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container body-content">
+
+        @RenderBody()
+        <hr />
+        <br />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Pine Valley Furniture Company</p>
+        </footer>
+    </div>
+
+    <button class="btn btn-light" id="btnSwitch" onclick="switchColorMode()">🌞</button>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

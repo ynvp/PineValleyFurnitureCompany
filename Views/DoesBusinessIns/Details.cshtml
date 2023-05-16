@@ -1,0 +1,42 @@
+﻿@model S3G11_PVFAPP.Models.DoesBusinessIn
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DoesBusinessIn</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DoesBusinessInID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DoesBusinessInID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.CustomerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.CustomerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SalesTerritory.TerritoryName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SalesTerritory.TerritoryName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { cid = Model.Customer.CustomerID, stid = Model.SalesTerritory.TerritoryID }, new { @class = "btn btn-outline-primary" }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

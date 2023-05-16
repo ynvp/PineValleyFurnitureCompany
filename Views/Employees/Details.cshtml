@@ -1,0 +1,69 @@
+﻿@model S3G11_PVFAPP.Models.Employee
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Employee</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EmployeeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmployeeAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeAddress)
+        </dd>
+
+        <dt>
+            Supervisor Name
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Employee2.EmployeeName)
+        </dd>
+
+        <dt>Has Skills</dt>
+        <dd>
+            @{int i = 0;}
+            @foreach (var skill in Model.HasSkill)
+            {
+                i++;
+                @Html.DisplayFor(modelItem => skill.Skill.SkillDescription)
+                if (i < Model.HasSkill.Count)
+                {
+                    <p style="display:inline">, </p>
+                }
+            }
+        </dd>
+        <dt>Works at Locations</dt>
+        <dd>
+            @{int j = 0;}
+            @foreach (var location in Model.WorksIn)
+            {
+                j++;
+                @Html.DisplayFor(modelItem => location.WorkCenter.WorkCenterLocation)
+                if (j < Model.WorksIn.Count)
+                {
+                    <p style="display:inline">, </p>
+                }
+            }
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.EmployeeID }, new { @class = "btn btn-outline-primary" }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,44 @@
+﻿<div>
+    @model IEnumerable<S3G11_PVFAPP.Models.Product>
+
+    @{
+        ViewBag.Title = "Products";
+    }
+    <br />
+    <h2>Products</h2>
+    <p>
+        @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary float-end" })
+    </p>
+    <br />
+    <br />
+    @if (TempData["Message"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @TempData["Message"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-sm-3 mb-3 mb-sm-0">
+                <div class="card" style="width: 18rem; padding: 15px; margin: 10px;">
+                    <img class="card-img-top w-100" src="@Url.Content(item.ProductImage)" multiple />
+
+                    <div class="card-body">
+                        <h5 class="card-title">@Html.DisplayFor(modelItem => item.ProductDescription)</h5>
+                        <p class="card-text">Finish: @Html.DisplayFor(modelItem => item.ProductFinish)&middot; <span> $ @Html.DisplayFor(modelItem => item.ProductStandardPrice) </span> </p>
+                        <p class="card-text"><small class="text-muted">Product Line: @Html.DisplayFor(modelItem => item.ProductLine.ProductLineName)</small></p>
+                        <small>Product ID: @Html.DisplayFor(modelItem => item.ProductID)</small>
+                    </div>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ProductID }, new { @class = "btn btn-outline-primary m-2" })
+                    @Html.ActionLink("Details", "Details", new { id = item.ProductID }, new { @class = "btn btn-outline-secondary m-2" })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ProductID }, new { @class = "btn btn-outline-warning m-2" })
+                </div>
+            </div>
+        }
+    </div>
+
+
+</div>

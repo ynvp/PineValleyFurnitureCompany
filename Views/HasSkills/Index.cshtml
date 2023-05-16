@@ -1,0 +1,46 @@
+﻿@model IEnumerable<S3G11_PVFAPP.Models.HasSkill>
+
+@{
+    ViewBag.Title = "Has Skills";
+}
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["Message"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+<h2>Has Skills</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary float-end" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Employee.EmployeeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Skill.SkillDescription)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Employee.EmployeeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Skill.SkillDescription)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { eid = item.EmployeeID, sid = item.SkillID }, new { @class = "btn btn-outline-primary" })
+                @Html.ActionLink("Details", "Details", new { eid = item.EmployeeID, sid = item.SkillID }, new { @class = "btn btn-outline-secondary" })
+                @Html.ActionLink("Delete", "Delete", new { eid = item.EmployeeID, sid = item.SkillID }, new { @class = "btn btn-outline-warning" })
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,84 @@
+﻿@model S3G11_PVFAPP.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dd class="float-end">
+            <img src="@Url.Content(Model.ProductImage)" width="250" height="250" multiple />
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductFinish)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductFinish)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductStandardPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductStandardPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductLine.ProductLineName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ProductLine.ProductLineName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ProducedIn) (WorkCenter)
+        </dt>
+        <dd>
+            @{int i = 0;}
+            @foreach (var pdcd in Model.ProducedIn)
+            {
+                i++;
+                @Html.DisplayFor(modelItem => pdcd.WorkCenter.WorkCenterLocation)
+                if (i < Model.ProducedIn.Count)
+                {
+                    <p style="display:inline">, </p>
+                }
+            }
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Uses) (Raw Materials)
+        </dt>
+        <dd>
+            @{int j = 0;}
+            @foreach (var pdcd in Model.Uses)
+            {
+                i++;
+                @Html.DisplayFor(modelItem => pdcd.RawMaterial.MaterialName)
+                if (j < Model.ProducedIn.Count)
+                {
+                    <p style="display:inline">, </p>
+                }
+            }
+        </dd>
+    </dl>
+</div>
+<div>
+
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ProductID }, new { @class = "btn btn-outline-primary" }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

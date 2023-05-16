@@ -1,0 +1,76 @@
+﻿@model S3G11_PVFAPP.Models.Customer
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Customer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerPostalCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerPostalCode)
+        </dd>
+        <dt>Does Business In</dt>
+        <dd>
+            @{int i = 0;}
+            @foreach (var bzin in Model.DoesBusinessIn)
+            {
+                i++;
+                @Html.DisplayFor(modelItem => bzin.SalesTerritory.TerritoryName)
+                if (i < Model.DoesBusinessIn.Count)
+                {
+                    <p style="display:inline">, </p>
+                }
+            }
+        </dd>
+    </dl>
+</div>
+<div>
+    <h5>Current Orders</h5>
+    @foreach (var item in Model.Order)
+
+    {
+<p>Order ID: @Html.DisplayFor(model => item.OrderID) @Html.ActionLink("Order Details", "Details", "Orders", new { id = item.OrderID }, new { @class = "btn btn-outline-secondary" })</p>
+        
+        <table class="table">
+            <tr>
+                <th>Product Name</th>
+                <th> Ordered Quantity</th>
+            </tr>
+            @foreach (var orderProduct in item.OrderLine)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(model => orderProduct.Product.ProductDescription)</td>
+                    <td>@Html.DisplayFor(model => orderProduct.OrderedQuantity)</td>
+                </tr>
+            }
+        </table>
+    }
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CustomerID }, new { @class = "btn btn-outline-primary" }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,191 @@
+﻿@model IEnumerable<S3G11_PVFAPP.Models.Product>
+@{
+    ViewBag.Title = "Home Page";
+}
+<br />
+<header class="masthead common">
+    <div class="container">
+        <h1 class="masthead-subheading">Welcome To Our Furniture Shop!</h1><br />
+        <div class="masthead-heading text-uppercase">It's Nice To Meet You</div>
+    </div>
+</header>
+
+<h1> Our Products </h1>
+<div style="height: 500px; overflow-y: hidden;">
+    <div id="carouselExample" class="carousel carousel-dark slide ">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="d-block" src="https://localhost:44324/ProductImages/10151495_MI_900x231949095.jpg" style="display: block; margin-left: auto; margin-right: auto; width: 30%;" />
+                <h5 style="display: block; margin-left: auto; margin-right: auto; width: 30%;">Dinner Table</h5>
+                <p style="display: block; margin-left: auto; margin-right: auto; width: 30%;"> Finish: Oak</p>
+            </div>
+            @foreach (var item in Model)
+            {
+                <div class="carousel-item">
+                    <img class="d-block" src="@Url.Content(item.ProductImage)" style="display: block; margin-left: auto; margin-right: auto; width: 30%;" />
+                    <h5 style="display: block; margin-left: auto; margin-right: auto; width: 30%">@Html.DisplayFor(modelItem => item.ProductDescription)</h5>
+                    <p style="display: block; margin-left: auto; margin-right: auto; width: 30%;"> Finish: @Html.DisplayFor(modelItem => item.ProductFinish) </p>
+                </div>
+            }
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
+
+<h1>Information</h1>
+<div class="row">
+    <p> 🙋‍♂️ Customers Information</p>
+    <div class="col-md-4">
+        <h2>@Html.ActionLink("Customers", "Index", "Customers", null, new { @class = "btn btn-outline-secondary" })</h2>
+    </div>
+    <div class="col-md-4">
+        <h2>@Html.ActionLink("Does Business In", "Index", "DoesBusinessIns", null, new { @class = "btn btn-outline-secondary" })</h2>
+    </div>
+</div>
+<div class="row">
+    <hr />
+    <p>👨‍💼 Employees Information</p>
+    <div class="col-md-4">
+        <h2>@Html.ActionLink("Employees", "Index", "Employees", null, new { @class = "btn btn-outline-secondary" })</h2>
+    </div>
+    <div class="col-md-4">
+        <h2>@Html.ActionLink("Skills", "Index", "Skills", null, new { @class = "btn btn-outline-secondary" })</h2>
+    </div>
+    <div class="col-md-4">
+        <h2>@Html.ActionLink("Has Skills", "Index", "HasSkills", null, new { @class = "btn btn-outline-secondary" })</h2>
+    </div>
+</div>
+<hr />
+<div class="row">
+    <p> 🛒 Orders Management</p>
+
+    <div class="col-md-4">
+        <h2>@Html.ActionLink("Orders", "Index", "Orders", null, new { @class = "btn btn-outline-secondary" })</h2>
+    </div>
+
+    <div class="col-md-4">
+        <h2>@Html.ActionLink("Order Line", "Index", "OrderLines", null, new { @class = "btn btn-outline-secondary" })</h2>
+    </div>
+</div>
+<hr />
+<div class="row">
+    <p> 🛍️ Product Management</p>
+
+    <div class="col-md-4">
+        <h2>@Html.ActionLink("Product Lines", "Index", "ProductLines", null, new { @class = "btn btn-outline-secondary" })</h2>
+    </div>
+
+    <div class="col-md-4">
+        <h2>@Html.ActionLink("Products", "Index", "Products", null, new { @class = "btn btn-outline-secondary" })</h2>
+    </div>
+
+    <div class="col-md-4">
+        <h2>@Html.ActionLink("Raw Materials", "Index", "RawMaterials", null, new { @class = "btn btn-outline-secondary" })</h2>
+    </div>
+
+    <div class="col-md-4">
+        <h2>@Html.ActionLink("Produced In", "Index", "ProducedIns", null, new { @class = "btn btn-outline-secondary" })</h2>
+    </div>
+
+    <div class="col-md-4">
+        <h2>@Html.ActionLink("Uses", "Index", "Uses", null, new { @class = "btn btn-outline-secondary" })</h2>
+    </div>
+</div>
+<hr />
+<div class="row">
+    <p> 🔗🚢 Supply Chain</p>
+    <div class="col-md-4">
+        <h2>@Html.ActionLink("Supplies", "Index", "Supplies", null, new { @class = "btn btn-outline-secondary" })</h2>
+    </div>
+    <div class="col-md-4">
+        <h2>@Html.ActionLink("Vendors", "Index", "Vendors", null, new { @class = "btn btn-outline-secondary" })</h2>
+    </div>
+</div>
+<hr />
+<div class="row">
+    <p>💲Sales</p>
+    <div class="col-md-4">
+        <h2> @Html.ActionLink("Salespersons", "Index", "Salespersons", null, new { @class = "btn btn-outline-secondary" })</h2>
+    </div>
+    <div class="col-md-4">
+        <h2>@Html.ActionLink("Sales Territories", "Index", "SalesTerritories", null, new { @class = "btn btn-outline-secondary" })</h2>
+    </div>
+</div>
+<hr />
+<div class="row">
+    <p>👷‍♂️Manufacturing</p>
+    <div class="col-md-4">
+        <h2>@Html.ActionLink("Work Centers", "Index", "WorkCenters", null, new { @class = "btn btn-outline-secondary" })</h2>
+    </div>
+</div>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-info vertical-right-aligned" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    README
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">README</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h1 id="pine-valley-furniture-company-web-application">Pine Valley Furniture Company Web Application</h1>
+                <p>Welcome to the Pine Valley Furniture Company web application! This application is designed to help manage the various aspects of the company, including customers, products, orders, employees, work centers, raw materials, skills, salespersons, sales territories and vendors.</p>
+                <h2 id="access">Access</h2>
+                <p>website: <a href="http://se.ynvp.tech">http://se.ynvp.tech</a></p>
+                <h2 id="getting-started">Getting Started</h2>
+                <p>To get started, you will need to have Visual Studio 2019 installed on your computer. Once you have installed Visual Studio, you can unzip the S3G11-PVFAPP file to get the project folder. Use MS SQL server 2022 to restore the S3G11-PVFDB.bak file provided in the project folder. While opening project use option &quot;Open a project or solution&quot;, navigate to the project folder and select the .sln file to start visual studio. Run the server using IIS(windows server) present on  tool bar in visual studio. We&#39;ve hosted the application on se.ynvp.tech for easier access. CRUD operations are available for all the listed components. For tables with 2 primary keys is also now working in edit, delete and details modes and listed in nav bar of application.</p>
+                <h3 id="softwares-used">Softwares used</h3>
+                <p>
+                    Visual Studio 2019
+                    Microsoft SQL Sever 2022
+                    Microsoft SQL Server Management Studio 19.0.1
+                    Bootstrap v5.3(latest)
+                    Chrome Web Browser
+                </p>
+                <h2 id="modules">Modules</h2>
+                <p>The Pine Valley Furniture Company web application is divided into several modules. Here&#39;s a brief overview of each module:</p>
+                <h3 id="customers">Customers</h3>
+                <p>The customers module allows you to manage customer information, including their address, order history.</p>
+                <h3 id="products">Products</h3>
+                <p>The products module allows you to manage the products that Pine Valley Furniture Company sells. You can add new products, update existing products, and remove products that are no longer available.</p>
+                <h3 id="product-lines">Product Lines</h3>
+                <p>The product lines module allows you to group related products together into product lines. This makes it easier to manage large numbers of products and helps customers find what they are looking for more easily.</p>
+                <h3 id="orders">Orders</h3>
+                <p>The orders module allows you to manage customer orders. You can create new orders, update existing orders, and track the invoices of orders processed.</p>
+                <h3 id="order-lines">Order Lines</h3>
+                <p>The order lines module allows you to manage the individual items that make up an order. You can add new items, update existing items, and remove items that are no longer needed.</p>
+                <h3 id="employees">Employees</h3>
+                <p>The employees module allows you to manage employee information, including their supervisor, address.</p>
+                <h3 id="skills">Skills</h3>
+                <p>The skills module allows you to manage the skills of each employee. You can add new skills, update existing skills, and remove skills that are no longer needed.</p>
+                <h3 id="work-centers">Work Centers</h3>
+                <p>The work centers module allows you to manage the various work centers at Pine Valley Furniture Company. This includes information about the products manufactured at each work center, as well as the employees who work there.</p>
+                <h3 id="raw-materials">Raw Materials</h3>
+                <p>The raw materials module allows you to manage the raw materials that are used to create Pine Valley Furniture Company&#39;s products. You can track unit of measure, price per unit, place orders for more materials, and manage suppliers.</p>
+                <h3 id="vendors">Vendors</h3>
+                <p>The vendors module allows you to manage the various vendors that Pine Valley Furniture Company works with. This includes information about raw materials they provide, as well as their contact information.</p>
+                <h3 id="sales-persons">Sales Persons</h3>
+                <p>The sales persons module allows you to manage the sales team at Pine Valley Furniture Company. You can add new sales persons, update existing sales persons, and remove sales persons that are no longer needed.</p>
+                <h3 id="sales-territories">Sales Territories</h3>
+                <p>The sales territories module allows you to manage the different territories where Pine Valley Furniture Company sells its products. You can assign sales persons to specific territories, and manage marketing efforts for each territory.</p>
+                <h3 id="conclusion">Conclusion</h3>
+                <p>Thank you for choosing the Pine Valley Furniture Company web application. We hope that this application will help you manage your business more effectively and efficiently. If you have any questions or feedback, please don&#39;t hesitate to contact us at support@se.ynvp.tech.</p>
+
+            </div>
+            <div class="modal-footer">
+                Group 11 CS
+            </div>
+        </div>
+    </div>
+</div>

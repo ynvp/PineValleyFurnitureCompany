@@ -1,0 +1,47 @@
+﻿@model S3G11_PVFAPP.Models.SalesTerritory
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SalesTerritory</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TerritoryName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TerritoryName)
+        </dd>
+
+    </dl>
+</div>
+<div>
+    <h6>Customers doing businees in this territory</h6>
+    <table class="table">
+        <tr>
+            <th>Customer ID</th>
+            <th>Customer Name</th>
+        </tr>
+        @foreach (var bzin in Model.DoesBusinessIn)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => bzin.Customer.CustomerID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => bzin.Customer.CustomerName)
+                </td>
+            </tr>
+        }
+    </table>
+
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TerritoryID }, new { @class = "btn btn-outline-primary" }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

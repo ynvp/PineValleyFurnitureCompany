@@ -1,0 +1,53 @@
+﻿@model S3G11_PVFAPP.Models.ProductLine
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ProductLine</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductLineName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductLineName)
+        </dd>
+
+    </dl>
+</div>
+<div>
+    <h5>Products under this Product Line</h5>
+    <table class="table">
+        <thead>
+            <tr>
+                <th> Product Name</th>
+                <th> Product Finish</th>
+                <th> Price</th>
+            </tr>
+        </thead>
+
+        @foreach (var item in Model.Product)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => item.ProductDescription)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.ProductFinish)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.ProductStandardPrice)
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ProductLineID }, new { @class = "btn btn-outline-primary" }) |
+    @Html.ActionLink("Back to List", "Index", new { @class = "btn btn-outline-secondary" })
+</p>

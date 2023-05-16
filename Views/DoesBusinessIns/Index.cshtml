@@ -1,0 +1,45 @@
+﻿@model IEnumerable<S3G11_PVFAPP.Models.DoesBusinessIn>
+
+@{
+    ViewBag.Title = "Does Business In";
+}
+
+<h2>Does Business In</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary float-end" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DoesBusinessInID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Customer.CustomerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SalesTerritory.TerritoryName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DoesBusinessInID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customer.CustomerName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SalesTerritory.TerritoryName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { cid = item.CustomerID, stid = item.TerritoryID }, new { @class = "btn btn-outline-primary" })
+            @Html.ActionLink("Details", "Details", new { cid = item.CustomerID, stid = item.TerritoryID }, new { @class = "btn btn-outline-secondary" })
+            @Html.ActionLink("Delete", "Delete", new { cid = item.CustomerID, stid = item.TerritoryID }, new { @class = "btn btn-outline-warning" })
+        </td>
+    </tr>
+}
+
+</table>

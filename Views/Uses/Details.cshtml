@@ -1,0 +1,42 @@
+﻿@model S3G11_PVFAPP.Models.Uses
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Uses</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UsesID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UsesID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Product.ProductDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product.ProductDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RawMaterial.MaterialName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RawMaterial.MaterialName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { pid = Model.Product.ProductID, rid = Model.RawMaterial.MaterialID }, new { @class = "btn btn-outline-primary" }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

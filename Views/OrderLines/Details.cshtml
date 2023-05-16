@@ -1,0 +1,42 @@
+﻿@model S3G11_PVFAPP.Models.OrderLine
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>OrderLine</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderedQuantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderedQuantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Order.OrderID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Order.OrderID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Product.ProductDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product.ProductDescription)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { oid = Model.Order.OrderID, pid = Model.Product.ProductID }, new { @class = "btn btn-outline-primary" }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

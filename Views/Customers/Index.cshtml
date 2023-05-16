@@ -1,0 +1,77 @@
+﻿@model IEnumerable<S3G11_PVFAPP.Models.Customer>
+
+@{
+    ViewBag.Title = "Customers";
+}
+<br />
+<header class="common customers">
+</header>
+<h2>Customers</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary float-end" })
+</p>
+<br />
+<br />
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["Message"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CustomerID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CustomerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CustomerAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CustomerPostalCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DoesBusinessIn)
+        </th>
+        <th>Actions</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerPostalCode)
+            </td>
+            <td>
+                @{int i = 0;}
+                @foreach (var bzin in item.DoesBusinessIn)
+                {
+                    i++;
+                    @Html.DisplayFor(modelItem => bzin.SalesTerritory.TerritoryName)
+                    if (i < item.DoesBusinessIn.Count)
+                    {
+                        <p style="display:inline">, </p>
+                    }
+                }
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.CustomerID }, new { @class = "btn btn-outline-primary" })
+                @Html.ActionLink("Details", "Details", new { id = item.CustomerID }, new { @class = "btn btn-outline-secondary" })
+                @Html.ActionLink("Delete", "Delete", new { id = item.CustomerID }, new { @class = "btn btn-outline-warning" })
+            </td>
+        </tr>
+    }
+</table>
