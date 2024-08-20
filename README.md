@@ -2,9 +2,6 @@
 
 Welcome to the Pine Valley Furniture Company web application! This application is designed to help manage the various aspects of the company, including customers, products, orders, employees, work centers, raw materials, skills, salespersons, sales territories and vendors.
 
-## Access
-website: http://se.ynvp.tech
-
 
 ## Getting Started
 
